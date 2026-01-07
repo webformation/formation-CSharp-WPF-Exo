@@ -1,0 +1,15 @@
+﻿<Window x:Class="exercice_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:exercice_3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Name="message" Content="Label" HorizontalAlignment="Left" Margin="67,143,0,0" VerticalAlignment="Top" Height="42" Width="454"/>
+        <TextBox TextChanged="nom_TextChanged" Name="nom" HorizontalAlignment="Left" Margin="67,232,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Name="Valider" Content="Valider" HorizontalAlignment="Left" Height="19" Margin="67,289,0,0" VerticalAlignment="Top" Width="120" Click="Valider_Click"/>
+
+    </Grid>
+</Window>
