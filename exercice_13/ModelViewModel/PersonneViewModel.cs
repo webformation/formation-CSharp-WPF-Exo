@@ -65,12 +65,12 @@ namespace exercice13
         public Annuaire annuaire = new Annuaire();
         public ObservableCollection<Personne> Personnes
         {
-            get { return annuaire.personnes; }
+            get { return annuaire.Personnes; }
         }
         public bool PeutInviter         {
             get
             {
-                return annuaire.personnes.Count > 0;
+                return !annuaire.EstVide;
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -93,7 +93,7 @@ namespace exercice13
                             nouveau = new Parent(Nom, Date_naissance, Relation);
                         else
                             nouveau = new Personne(Nom, Date_naissance);
-                        if (annuaire.personnes.Contains(nouveau))
+                        if (annuaire.ContientPersonne(nouveau))
                         {
                             System.Windows.MessageBox.Show($"Je vous ai déjà dit bonjour {Nom} !");
                             return;
@@ -117,14 +117,14 @@ namespace exercice13
             {
                 return new RelayCommand(param =>
                 {
-                    if (annuaire.personnes.Count == 0)
+                    if (annuaire.EstVide)
                     {
                         System.Windows.MessageBox.Show("Aucune personne enregistrée.", "Annuaire", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                         return;
                     }
                     DateTime dateInvitation = DateTime.Now.AddDays(7);
                     StringBuilder invitations = new StringBuilder();
-                    foreach (var personne in annuaire.personnes)
+                    foreach (var personne in annuaire.Personnes)
                     {
                         if (personne is IInvitable invitable && invitable.Est_disponible(dateInvitation))
                         {

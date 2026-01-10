@@ -8,14 +8,28 @@ namespace exercice_5
 {
     public class Annuaire
     {
-        public List<Personne> personnes = new List<Personne>();
-         void AjouterPersonne(Personne p)
+        private List<Personne> personnes = new List<Personne>();
+        public List<Personne> Personnes
+        {
+            get
+            {
+                return personnes;
+            }
+        }
+        public void AjouterPersonne(Personne p)
         {
             personnes.Add(p);
         }
         public bool ContientPersonne(Personne p)
         {
             return personnes.Contains(p);
+        }
+        public bool EstVide
+        {
+            get
+            {
+                return personnes.Count == 0;
+            }
         }
     }
 }

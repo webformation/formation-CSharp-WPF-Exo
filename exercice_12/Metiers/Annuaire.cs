@@ -9,14 +9,28 @@ namespace exercice12
 {
     public class Annuaire
     {
-        public ObservableCollection<Personne> personnes = new ObservableCollection<Personne>();
-         void AjouterPersonne(Personne p)
+        private ObservableCollection<Personne> personnes = new ObservableCollection<Personne>();
+        public ObservableCollection<Personne> Personnes
+        {
+            get
+            {
+                return personnes;
+            }
+        }
+        public void AjouterPersonne(Personne p)
         {
             personnes.Add(p);
         }
         public bool ContientPersonne(Personne p)
         {
             return personnes.Contains(p);
+        }
+        public bool EstVide
+        {
+            get
+            {
+                return personnes.Count == 0;
+            }
         }
     }
 }

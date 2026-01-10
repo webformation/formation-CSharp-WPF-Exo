@@ -51,14 +51,14 @@ namespace exercice_4
                 //    MessageBox.Show($"Je vous ai déjà dit bonjour {nom.Text} !");
                 //    return;
                 //}
-                if (annuaire.personnes.Contains(p))
+                if (annuaire.ContientPersonne(p))
                 {
                     MessageBox.Show($"Je vous ai déjà dit bonjour {nom.Text} !");
                     return;
                 }
                 else
                 {
-                    annuaire.personnes.Add(p);
+                    annuaire.AjouterPersonne(p);
                     Afficher.Visibility = Visibility.Visible;   
                     //personnes.Add(p);
                     MessageBox.Show($"Bonjour {p.Nom}\nVous êtes né le {p.date_naissance.ToShortDateString()}",
@@ -71,7 +71,7 @@ namespace exercice_4
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (annuaire.personnes.Count == 0)
+            if (annuaire.EstVide)
             {
                 MessageBox.Show("Aucune personne enregistrée.", "Annuaire", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;

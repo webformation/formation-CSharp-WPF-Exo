@@ -43,14 +43,14 @@ namespace exercice_7
                 //p.Nom = nom.Text;
                 //p.date_naissance = dateNaissance.SelectedDate.HasValue ? dateNaissance.SelectedDate.Value : DateTime.Now.Date;
                 Personne nouveau = new Personne(p.Nom, p.date_naissance);
-                if (annuaire.personnes.Contains(nouveau))
+                if (annuaire.ContientPersonne(nouveau))
                 {
                     MessageBox.Show($"Je vous ai déjà dit bonjour {nom.Text} !");
                     return;
                 }
                 else
                 {
-                    annuaire.personnes.Add(nouveau);
+                    annuaire.AjouterPersonne(nouveau);
                     Afficher.Visibility = Visibility.Visible;
 
                     MessageBox.Show($"Bonjour {nouveau.Nom}\nVous êtes né le {nouveau.date_naissance.ToShortDateString()}",
@@ -63,13 +63,13 @@ namespace exercice_7
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            if (annuaire.personnes.Count == 0)
+            if (annuaire.EstVide)
             {
                 MessageBox.Show("Aucune personne enregistrée.", "Annuaire", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             String liste = "Liste des personnes enregistrées :\n";
-            foreach (Personne p in annuaire.personnes)
+            foreach (Personne p in annuaire.Personnes)
             {
                 liste += $"- {p.ToString()}\n";
             }

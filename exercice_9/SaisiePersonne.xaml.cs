@@ -27,7 +27,7 @@ namespace exercice_9{
             Afficher.Visibility = Visibility.Hidden;
             this.DataContext = p;
             LPersonne.DataContext = annuaire;
-            LPersonne.ItemsSource = annuaire.personnes;
+            LPersonne.ItemsSource = annuaire.Personnes;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,9 +41,6 @@ namespace exercice_9{
 
             else
             {
-                //p.Nom = nom.Text;
-                //p.date_naissance = dateNaissance.SelectedDate.HasValue ? dateNaissance.SelectedDate.Value : DateTime.Now.Date;
-
                 Personne nouveau;
                 if (Hobby.Text.Length > 0) 
                     nouveau = new Ami(p.Nom, p.date_naissance,Hobby.Text);
@@ -52,14 +49,14 @@ namespace exercice_9{
                 else
                     nouveau = new Personne(p.Nom, p.date_naissance);
 
-                if (annuaire.personnes.Contains(nouveau))
+                if (annuaire.ContientPersonne(nouveau))
                 {
                     MessageBox.Show($"Je vous ai déjà dit bonjour {nom.Text} !");
                     return;
                 }
                 else
                 {
-                    annuaire.personnes.Add(nouveau);
+                    annuaire.AjouterPersonne(nouveau);
                     Afficher.Visibility = Visibility.Visible;
 
                 }
@@ -70,13 +67,13 @@ namespace exercice_9{
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            if (annuaire.personnes.Count == 0)
+            if (annuaire.EstVide)
             {
                 MessageBox.Show("Aucune personne enregistrée.", "Annuaire", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             String liste = "Liste des personnes enregistrées :\n";
-            foreach (Personne p in annuaire.personnes)
+            foreach (Personne p in annuaire.Personnes)
             {
                 liste += $"- {p.ToString()}\n";
             }

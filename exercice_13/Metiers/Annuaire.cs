@@ -9,7 +9,14 @@ namespace exercice13
 {
     public class Annuaire
     {
-        public ObservableCollection<Personne> personnes = new ObservableCollection<Personne>();
+        private ObservableCollection<Personne> personnes = new ObservableCollection<Personne>();
+        public ObservableCollection<Personne> Personnes
+        {
+            get
+            {
+                return personnes;
+            }
+        }
         public void AjouterPersonne(Personne p)
         {
             personnes.Add(p);
@@ -17,6 +24,13 @@ namespace exercice13
         public bool ContientPersonne(Personne p)
         {
             return personnes.Contains(p);
+        }
+        public bool EstVide
+        {
+            get
+            {
+                return personnes.Count == 0;
+            }
         }
     }
 }
